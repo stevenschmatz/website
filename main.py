@@ -37,11 +37,17 @@ def post():
 
 @app.route("/api/pomodoro", methods=['POST'])
 def log_pomodoro():
+    # Return forbidden error if token is incorrect
+    if os.environ.get('SLACK_TOKEN') != request.form['token']:
+        return redirect('/'), 403
+
+    # Insert the pomodoro
     pomodoro = {
         "text": request.form['text'],
         "time": datetime.datetime.utcnow()
     }
     db.pomodoro.insert(pomodoro)
+
     return "Pomodoro logged successfully!", 200
 
 if __name__ == "__main__":
