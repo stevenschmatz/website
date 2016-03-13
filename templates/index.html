@@ -10,6 +10,7 @@
         message: <input type="text" name="message"/>
         <input type="submit" value="Submit"/>
     </form>
+    {{ configname }}
     {% for shout in shouts %}
     {{ shout.name }} - {{ shout.message }} <br>
     {% endfor %}
