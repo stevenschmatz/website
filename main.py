@@ -3,11 +3,11 @@ from flask import Flask, render_template, request, redirect
 import pymongo
 from pymongo import MongoClient
 
-MONGO_URL = os.environ.get('MONGOHQ_URL')
+MONGO_URL = os.environ.get('MONGOLAB_URI')
 client = MongoClient(MONGO_URL)
 
 # Specify the database
-db = client.app29843323
+db = client.heroku_lk6xm4m6
 collection = db.shoutouts
 
 app = Flask(__name__)
