@@ -1,6 +1,7 @@
 import os
 from flask import Flask, render_template, request, redirect
 from pymongo import MongoClient
+import datetime
 
 # Open up MongoDB connection
 MONGO_URL = os.environ.get('MONGOLAB_URI')
@@ -33,6 +34,15 @@ def post():
     collection.insert(shout)
     return redirect('/')
 
+
+@app.route("/api/pomodoro", methods=['POST'])
+def log_pomodoro():
+    pomodoro = {
+        "text": request.form['text'],
+        "time": datetime.datetime.utcnow()
+    }
+    db.pomodoro.insert(pomodoro)
+    return "Pomodoro logged successfully!"
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
