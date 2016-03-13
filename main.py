@@ -42,7 +42,7 @@ def log_pomodoro():
         "time": datetime.datetime.utcnow()
     }
     db.pomodoro.insert(pomodoro)
-    return "Pomodoro logged successfully!"
+    return "Pomodoro logged successfully!", 200
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
