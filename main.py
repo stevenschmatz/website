@@ -48,7 +48,9 @@ def log_pomodoro():
     }
     db.pomodoro.insert(pomodoro)
 
-    return "Pomodoro logged successfully!", 200
+    response = "Pomodoro logged successfully: '%s'." % request.form['text']
+
+    return response, 200
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
