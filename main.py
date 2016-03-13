@@ -19,6 +19,11 @@ app = Flask(__name__)
 
 @app.route("/", methods=['GET'])
 def index():
+    return render_template('landingPage.html')
+
+
+@app.route("/shouts", methods=['GET'])
+def show_shouts():
     shouts = collection.find()
     return render_template('index.html', shouts=shouts)
 
@@ -31,6 +36,7 @@ def post():
     }
     collection.insert(shout)
     return redirect('/')
+
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
