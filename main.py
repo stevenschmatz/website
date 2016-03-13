@@ -1,13 +1,9 @@
 import os
-from config import config as Config
 from flask import Flask, render_template, request, redirect
 from pymongo import MongoClient
 
 # Open up MongoDB connection
 MONGO_URL = os.environ.get('MONGOLAB_URI')
-if MONGO_URL is None:
-    MONGO_URL = Config.debug_mongo_uri
-
 client = MongoClient(MONGO_URL)
 
 # Specify the database
