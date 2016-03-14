@@ -1,0 +1,8 @@
+weather:
+  api_key: dd7a743b4574abd4a2ddf17bf9fd3d62
+
+slack:
+  token: sPI4ehLbQyIeEpbpNajVofWo
+
+mongolab:
+  uri: mongodb://heroku_lk6xm4m6:844eceknj05725mimdf888r1ui@ds011449.mlab.com:11449/heroku_lk6xm4m6
