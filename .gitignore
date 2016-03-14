@@ -83,6 +83,7 @@ ENV/
 
 # config
 config.py
+config.yaml
 
 # Spyder project settings
 .spyderproject
