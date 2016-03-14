@@ -17,22 +17,6 @@ def index():
     return render_template('landingPage.html')
 
 
-@app.route("/shouts", methods=['GET'])
-def show_shouts():
-    shouts = collection.find()
-    return render_template('index.html', shouts=shouts)
-
-
-@app.route("/post", methods=['POST'])
-def post():
-    shout = {
-        "name": request.form['name'],
-        "message": request.form['message']
-    }
-    collection.insert(shout)
-    return redirect('/')
-
-
 if __name__ == "__main__":
     register_all_blueprints()
     port = int(os.environ.get("PORT", 5000))
