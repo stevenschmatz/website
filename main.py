@@ -1,17 +1,15 @@
 import os
 from flask import Flask, render_template, request, redirect
-from pymongo import MongoClient
-import datetime
+from app import db
+from api.pomodoro import bp as pomodoro_bp
 
-# Open up MongoDB connection
-MONGO_URL = os.environ.get('MONGOLAB_URI')
-client = MongoClient(MONGO_URL)
-
-# Specify the database
-db = client.heroku_lk6xm4m6
 collection = db.shoutouts
 
 app = Flask(__name__)
+
+
+def register_all_blueprints():
+    app.register_blueprint(pomodoro_bp)
 
 
 @app.route("/", methods=['GET'])
@@ -35,23 +33,7 @@ def post():
     return redirect('/')
 
 
-@app.route("/api/pomodoro", methods=['POST'])
-def log_pomodoro():
-    # Return forbidden error if token is incorrect
-    if os.environ.get('SLACK_TOKEN') != request.form['token']:
-        return redirect('/'), 403
-
-    # Insert the pomodoro
-    pomodoro = {
-        "text": request.form['text'],
-        "time": datetime.datetime.utcnow()
-    }
-    db.pomodoro.insert(pomodoro)
-
-    response = "Pomodoro logged successfully: '%s'." % request.form['text']
-
-    return response, 200
-
 if __name__ == "__main__":
+    register_all_blueprints()
     port = int(os.environ.get("PORT", 5000))
-    app.run(host='0.0.0.0', port=port)
+    app.run(host='0.0.0.0', port=port, debug=True)
