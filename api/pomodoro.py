@@ -1,15 +1,22 @@
 import os
 import datetime
 from flask import Blueprint, request, redirect
-from app import db
+from app import db, config
 
 bp = Blueprint('pomodoro', __name__, url_prefix='/api')
 
 
 @bp.route("/pomodoro", methods=['POST'])
 def log_pomodoro():
+    """Logs a Pomodoro to the 'pomodoro' db collection.
+
+    Accessible through the /pomodoro Slack command.
+    """
+
+    slack_token = os.environ.get('SLACK_TOKEN') or config['slack']['token']
+
     # Return forbidden error if token is incorrect
-    if os.environ.get('SLACK_TOKEN') != request.form['token']:
+    if slack_token != request.form['token']:
         return redirect('/'), 403
 
     # Insert the pomodoro

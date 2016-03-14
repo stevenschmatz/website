@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template
 from app import db
 from api.pomodoro import bp as pomodoro_bp
 
@@ -12,9 +12,14 @@ def register_all_blueprints():
     app.register_blueprint(pomodoro_bp)
 
 
-@app.route("/", methods=['GET'])
+@app.route("/")
 def index():
     return render_template('landingPage.html')
+
+
+@app.route("/weather")
+def weather():
+    return "Hello world"
 
 
 if __name__ == "__main__":
