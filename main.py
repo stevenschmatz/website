@@ -2,6 +2,7 @@ import os
 from flask import Flask, render_template
 from app import db
 from api.pomodoro import bp as pomodoro_bp
+from app.weather import get_weather_description
 
 collection = db.shoutouts
 
@@ -19,7 +20,7 @@ def index():
 
 @app.route("/weather")
 def weather():
-    return "Hello world"
+    return get_weather_description()
 
 
 if __name__ == "__main__":
