@@ -1,9 +1,11 @@
+import os
 import datetime
 from slackclient import SlackClient
 from app import db, config
 from app.weather import get_weather_description
 
-sc = SlackClient(config['slack']['bot_token'])
+sc = SlackClient(os.environ.get("SLACK_BOT_TOKEN") or
+                 config['slack']['bot_token'])
 ME = "D0SGBC3HB"
 
 
