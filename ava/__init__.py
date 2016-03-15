@@ -2,7 +2,6 @@ import os
 import datetime
 from slackclient import SlackClient
 from app import db, config
-from app.weather import get_weather_description
 
 sc = SlackClient(os.environ.get("SLACK_BOT_TOKEN") or
                  config['slack']['bot_token'])
@@ -14,9 +13,9 @@ def launch_bot():
         print "Connection failed on Ava init"
         return
 
-    weather_description = get_weather_description()
-    message = "Good morning! {0}".format(weather_description)
-    sc.rtm_send_message("general", message)
+    # weather_description = get_weather_description()
+    # message = "Good morning! {0}".format(weather_description)
+    # sc.rtm_send_message("general", message)
 
     now = datetime.datetime.utcnow()
     yesterday = now - datetime.timedelta(days=1)

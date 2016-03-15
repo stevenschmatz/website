@@ -121,5 +121,7 @@ def when_occuring(times):
 
 
 def get_high(today_weather):
+    if len(today_weather) == 0:
+        return "?"
     kelvin = max([x.get_temperature()['temp_max'] for x in today_weather])
     return int((kelvin - 273.15) * 1.8 + 32)
