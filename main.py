@@ -1,31 +1,9 @@
-import os
-from flask import Flask, render_template
-from app import db
-from ava import launch_bot
-from api.pomodoro import bp as pomodoro_bp
-from app.weather import get_weather_description
+"""Web app for steven.party."""
 
-collection = db.shoutouts
+from flask import Flask
+from app.create_app import init_web_app
 
-app = Flask(__name__)
-
-
-def register_all_blueprints():
-    app.register_blueprint(pomodoro_bp)
-
-
-@app.route("/")
-def index():
-    return render_template('landingPage.html')
-
-
-@app.route("/weather")
-def weather():
-    return get_weather_description()
-
+flask_app = Flask(__name__)
 
 if __name__ == "__main__":
-    register_all_blueprints()
-    port = int(os.environ.get("PORT", 5000))
-    launch_bot()
-    app.run(host='0.0.0.0', port=port, debug=True)
+    init_web_app(flask_app)
