@@ -1,11 +1,5 @@
-import os
-from slackclient import SlackClient
-from app import config
-from api.pomodoro import work_summary_english
 
-sc = SlackClient(os.environ.get("SLACK_BOT_TOKEN") or
-                 config['slack']['bot_token'])
-ME = "D0SGBC3HB"
+from communication import *
 
 
 def launch_bot():
@@ -13,4 +7,4 @@ def launch_bot():
         print "Connection failed on Ava init"
         return
 
-    sc.rtm_send_message(ME, work_summary_english())
+    send_me("Hello Steven!")
