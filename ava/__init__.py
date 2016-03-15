@@ -26,5 +26,8 @@ def launch_bot():
     pomodoros_week = db.pomodoro.find({"time": {"$lt": now,
                                                 "$gt": last_week}}).count()
 
-    sc.rtm_send_message("general", "You've completed {0} pomodoros in the past \
-        day, and {1} in the past week.".format(pomodoros_day, pomodoros_week))
+    work_summary = ("You've completed {0} pomodoros in the past day, "
+                    "and {1} in the past week.").format(pomodoros_day,
+                                                        pomodoros_week)
+
+    sc.rtm_send_message(ME, work_summary)

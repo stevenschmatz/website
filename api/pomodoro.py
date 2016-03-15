@@ -13,8 +13,10 @@ def log_pomodoro():
     Accessible through the /pomodoro Slack command.
     """
 
-    config_var = config['slack']['pomodoro_token']
-    slack_token = os.environ.get('SLACK_TOKEN') or config_var
+    if config is not None:
+        slack_token = config['slack']['pomodoro_token']
+    else:
+        slack_token = os.environ.get('SLACK_TOKEN')
 
     # Return forbidden error if token is incorrect
     if slack_token != request.form['token']:
