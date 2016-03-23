@@ -7,4 +7,4 @@ def hello_world():
 
 
 def add_cron_jobs():
-    sched.add_job(hello_world, "cron", second="*")
+    sched.add_job(hello_world, "cron", hour=19, minute=41)
