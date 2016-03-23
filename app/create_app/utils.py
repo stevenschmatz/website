@@ -2,6 +2,7 @@
 
 import os
 from app.ava import launch_bot
+from app.scheduler import sched
 
 
 def register_all_blueprints(flask_app):
@@ -29,4 +30,5 @@ def init_flask(flask_app):
 def init_web_app(flask_app):
     register_all_blueprints(flask_app)
     launch_bot()
+    sched.start()
     init_flask(flask_app)
