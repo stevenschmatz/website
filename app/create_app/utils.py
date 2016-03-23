@@ -19,7 +19,11 @@ def register_all_blueprints(flask_app):
 def init_flask(flask_app):
     """Initializes the web app object."""
     port = int(os.environ.get("PORT", 5000))
-    flask_app.run(host='0.0.0.0', port=port, debug=True)
+    if os.environ.get("DEBUG") is not None:
+        debug = False
+    else:
+        debug = True
+    flask_app.run(host='0.0.0.0', port=port, debug=debug)
 
 
 def init_web_app(flask_app):
