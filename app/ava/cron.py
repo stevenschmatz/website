@@ -38,4 +38,4 @@ def daily_summary():
 
 
 def add_cron_jobs():
-    sched.add_job(daily_summary, "cron", hour="*", minute="*")
+    sched.add_job(daily_summary, "interval", seconds=5)
