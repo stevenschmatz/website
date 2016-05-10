@@ -1,0 +1,226 @@
+/* Hexagon */
+
+video {
+    position: absolute;
+    width: 120px;
+    z-index: 2;
+    opacity: 1;
+
+    -moz-animation: hidingAnimation 0s ease-in 1.8s forwards;
+    /* Firefox */
+    -webkit-animation: hidingAnimation 0s ease-in 1.8s forwards;
+    /* Safari and Chrome */
+    -o-animation: hidingAnimation 0s ease-in 1.8s forwards;
+    /* Opera */
+    animation: hidingAnimation 0s ease-in 1.8s forwards;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+
+    padding: 10px;
+}
+
+@keyframes hidingAnimation {
+    to {
+        width: 0;
+        height: 0;
+        visibility: hidden;
+    }
+}
+
+@-webkit-keyframes hidingAnimation {
+    to {
+        width: 0;
+        height: 0;
+        visibility: hidden;
+    }
+}
+
+img.hexagon {
+    position: absolute;
+    width: 120px;
+    padding: 10px;
+}
+
+img.hexagon.fill {
+    z-index: 0;
+}
+
+img.hexagon.line {
+    z-index: 1;
+}
+
+img.hexagon.line:hover {
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+    -webkit-transition: opacity 0.4s ease-in-out;
+}
+
+.hexagon-container {
+    position: relative;
+    width: 120px;
+    height: 120px;
+}
+
+/* Top bar */
+
+.hexagon-container, .the-bar {
+    float: left;
+}
+
+.top-nav-bar {
+    overflow: hidden;
+}
+
+ul li {
+    display: inline;
+    margin-right: 20px;
+    font-family: "Lato";
+    font-size: 14pt;
+
+    transform: translateY(5px);
+    opacity: 0;
+
+    -moz-animation: liShowAnimation 0.5s ease-in 0.5s forwards;
+    /* Firefox */
+    -webkit-animation: liShowAnimation 0.5s ease-in 0.5s forwards;
+    /* Safari and Chrome */
+    -o-animation: liShowAnimation 0.5s ease-in 0.5s forwards;
+    /* Opera */
+    animation: liShowAnimation 0.5s ease-in 0.5s forwards;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+
+@keyframes liShowAnimation {
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+@-webkit-keyframes liShowAnimation {
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+li a {
+    color: #C2C2C2;
+}
+
+li a:hover, li a:focus, li a:active {
+    color: #38CACB;
+    transition: color 0.3s ease;
+}
+
+ul {
+    width: calc(100vw - 200px);
+    margin-left: 20px;
+    padding-top: 10px;
+    margin-top: 59px;
+    border-top: 1px solid #D3D3D3;
+}
+
+li.active a {
+    color: #38CACB;
+    transition: color 0.3s ease;
+
+    padding-top: 12px;
+    border-top: 3px solid #38CACB;
+}
+
+/* Body */
+
+.body-container {
+    width: calc(100vw - 140px);
+    padding-left: 140px;
+    margin-top: 50px;
+}
+
+.header-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    height: 200px;
+    margin-top: 20px;
+}
+
+.header-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 200px;
+    width: calc(100vw - 280px);
+    min-width: 363px;
+    margin-left: 140px;
+    align-self: center;
+    background-image: url(https://images.unsplash.com/photo-1437419764061-2473afe69fc2?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=76fba3bdb1e04cb26a02000be2fe7740);
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-size: 100%;
+    z-index: 0;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc(100vw - 280px);
+    min-width: 363px;
+    height: 200px;
+    margin-left: 140px;
+    background: rgba(0,0,0,0.2);
+    z-index: 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.overlay h1 {
+    color: white;
+    font-family: "Source Serif Pro";
+    font-weight: 800;
+}
+
+.image-container img {
+    width: calc(100vw - 280px);
+    min-width: 363px;
+    height: 45vw;
+    min-height: 400px;
+    margin: -100px 0px 0px -20px;
+}
+
+.body-container p {
+    font-family: "Source Serif Pro";
+    font-size: 15pt;
+    color: #7F7F7F;
+}
+
+.about-inner {
+    align-self: center;
+    max-width: 700px;
+}
+
+.body-container p a {
+    color: #38CACB;
+}
+
+.banner-image {
+    width: calc(100vw - 240px);
+}
+
+@media only screen and (max-width: 568px) {
+    .header-image-container {
+        display: none;
+    }
+
+    .body-container {
+        padding-left: 30px;
+        width: calc(100vw - 60px);
+    }
+}
