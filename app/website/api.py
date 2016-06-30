@@ -11,6 +11,7 @@ def landing_page():
     return render_template("landingPage.html")
 
 @blueprint.route("/fb")
+@blueprint.route("/facebook")
 def facebook_redirect():
     """Redirects to Facebook."""
     return redirect("https://www.facebook.com/schmatzarella")
